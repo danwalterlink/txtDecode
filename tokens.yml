@@ -1,0 +1,37 @@
+{
+  encoding: "ISO 8859-1",
+  tokens: {
+    '//[n]-//',
+    '//'
+  },
+  # procedure shortened for time constraint
+  # modify file content:
+  #   deleteDate/header
+  #  
+  fullProcedure: {
+    purgeDuplicates: {
+      identifyTwoLineDuplicates,
+      compareTwoLineDuplicates,
+      deleteSecondDuplicate
+    },
+    header: {
+      identifyHeader,
+      toFileDescription,
+    },
+    formatting: {
+      identifyFormatting,
+      toFileFormatDescription
+    },
+    separation: {
+      parseInfoLineWithFormatting,
+      parseTextLine
+    },
+    parseTextLine: {
+      identifySeparators
+    },
+    export: {
+      constructCSVStructure,
+      exportToFileFormat
+    }
+  }
+}
