@@ -1,0 +1,6 @@
+class token
+{
+  separator:
+  {
+  }
+}

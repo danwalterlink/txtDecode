@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/yggdrasilk/Code/txtDecode/build",
+  "command": "/usr/bin/clang++    -g   -o CMakeFiles/txtDecode.dir/main.cpp.o -c /Users/yggdrasilk/Code/txtDecode/main.cpp",
+  "file": "/Users/yggdrasilk/Code/txtDecode/main.cpp"
+}
+]

@@ -1,37 +1,105 @@
 {
   encoding: "ISO 8859-1",
   tokens: {
-    '//[n]-//',
-    '//'
+    common: {
+      separator: {
+        '\n',
+      }
+    },
+    description: {
+      separators: {
+        ';'
+      },
+      identifiers: { //ordered set
+        Datum,
+        Vorname,
+        Name,
+        Sterbedatum,
+        Maßnahme,
+        Signierer,
+        Zustand,
+        Ort,
+        Modalität,
+        Mitarbeiter,
+        Institut,
+        Überweisertyp,
+        Bereich,
+        Geschlecht,
+        Geburtsdatum,
+        Freigeber,
+        Durchführender,
+        Diktierer,
+        Beruf,
+        Religion,
+        Befundender,
+        Aufnahmeart,
+        Arbeitsplatz,
+        Aufnahmedatum,
+        Abrechnungsstelle,
+        Abbruchgrund,
+        Maßnahmestatus,
+        Größe,
+        Gewicht,
+        Dienstart,
+        Patienten Fremd ID,
+        Fall fremd ID,
+        Fallzusatz ID,
+        Patient Zusatz ID,
+        Anforderungs ID,
+        Befund ID,
+        Anforderungs Gruppen ID,
+        Interne Patienten ID,
+        Überweiser,
+        Alter
+      }
+    },
+    commentary: {
+      separators: {
+        '  ', // and any more than 2?
+        '--', // and more
+        ''
+      },
+      identifiers: {
+        Modalität,
+        Teil/Ganzkörper,
+        Tracer,
+        Mbg,
+        TMN-Staging,
+        T,
+        M,
+        N,
+        Melanom-Subtyp,
+        Breslow,
+        Ulzeration,
+        Clark-Level,
+        Lokalisation,
+        Primärexzision,
+        in toto,
+        Sicherheitsabstand,
+        Nachexzision,
+        Sentinelbiopsie,
+        N-Stadium,
+        Fernmetastase,
+        M-Stadium
+      }
+    }
   },
-  # procedure shortened for time constraint
-  # modify file content:
-  #   deleteDate/header
-  #  
-  fullProcedure: {
+  procedure: {
     purgeDuplicates: {
-      identifyTwoLineDuplicates,
-      compareTwoLineDuplicates,
-      deleteSecondDuplicate
-    },
-    header: {
-      identifyHeader,
-      toFileDescription,
-    },
-    formatting: {
-      identifyFormatting,
-      toFileFormatDescription
+      removeEmptyLines,
+      identifyInfoLineDuplicate,
+      deleteDuplicate
     },
     separation: {
-      parseInfoLineWithFormatting,
-      parseTextLine
+      separateChunks,
     },
     parseTextLine: {
-      identifySeparators
+      matchToIdentifier, //first approach is a simple identifier matching algorithm
+      constructTree,
     },
-    export: {
-      constructCSVStructure,
-      exportToFileFormat
+    toCSV: {
+      flattenTreeToTable,
+      exportWithFileFormat
     }
   }
 }
